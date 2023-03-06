@@ -1,0 +1,9 @@
+[submodule "auth/jwt/c_inc/mongoose"]
+	path = auth/jwt/c_inc/mongoose
+	url = https://github.com/cesanta/mongoose
+[submodule "auth/jwt/c_inc/libjwt"]
+	path = auth/jwt/c_inc/libjwt
+	url = https://github.com/benmcollins/libjwt
+[submodule "auth/jwt/c_inc/mbedtls"]
+	path = auth/jwt/c_inc/mbedtls
+	url = https://github.com/Mbed-TLS/mbedtls
