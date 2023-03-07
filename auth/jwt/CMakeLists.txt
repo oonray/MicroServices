@@ -4,6 +4,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 enable_testing()
 include(CPack)
 
+include(FetchContent)
+
 project(jwt_auth)
 
 include_directories(c_src)
@@ -13,8 +15,17 @@ link_libraries(bstring)
 
 FILE(GLOB c_src c_srv/*.c)
 
+#janson
+find_package(jansson)
+include_directories(${JANSSON_INCLUDE_DIR})
+link_libraries(${JANSSON_LIBRARIES})
+#libjwt
+find_package(libjwt)
+include_directories(${lIBJWT_INCLUDE_DIR})
+link_libraries(${LIBJWT_LIBRARIES})
 #executable
 add_executable(server c_src/main.c c_inc/mongoose/mongoose.c c_src/server.c c_src/handlers.c)
+
 
 #tests
 add_executable(server_tests c_inc/munit/munit.c c_inc/mongoose/mongoose.c c_src/server.c c_tests/tests.c c_src/handlers.c)
