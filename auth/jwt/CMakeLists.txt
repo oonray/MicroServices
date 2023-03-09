@@ -12,8 +12,12 @@ include_directories(c_src)
 include_directories(c_inc)
 
 link_libraries(bstring)
+link_libraries(argparse)
+link_libraries(tritree)
+link_libraries(fileio)
+link_libraries(ringbuffer)
 
-FILE(GLOB c_src c_srv/*.c)
+FILE(GLOB c_src "c_src/*.c")
 
 #janson
 find_package(jansson)
@@ -24,9 +28,9 @@ find_package(libjwt)
 include_directories(${lIBJWT_INCLUDE_DIR})
 link_libraries(${LIBJWT_LIBRARIES})
 #executable
-add_executable(server c_src/main.c c_inc/mongoose/mongoose.c c_src/server.c c_src/handlers.c)
+add_executable(server c_inc/mongoose/mongoose.c ${c_src})
 
 
 #tests
-add_executable(server_tests c_inc/munit/munit.c c_inc/mongoose/mongoose.c c_src/server.c c_tests/tests.c c_src/handlers.c)
+add_executable(server_tests c_inc/munit/munit.c c_inc/mongoose/mongoose.c ${c_src})
 add_test(server_test server_tests)
