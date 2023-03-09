@@ -4,3 +4,6 @@
 [submodule "auth/jwt/c_inc/mbedtls"]
 	path = auth/jwt/c_inc/mbedtls
 	url = https://github.com/Mbed-TLS/mbedtls
+[submodule "auth/jwt/c_inc/munit"]
+	path = auth/jwt/c_inc/munit
+	url = git@github.com:nemequ/munit.git
