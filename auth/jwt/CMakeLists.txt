@@ -11,13 +11,14 @@ project(jwt_auth)
 include_directories(c_src)
 include_directories(c_inc)
 
-link_libraries(bstring)
 link_libraries(argparse)
 link_libraries(tritree)
 link_libraries(fileio)
 link_libraries(ringbuffer)
+link_libraries(vector)
 
 FILE(GLOB c_src "c_src/*.c")
+list(FILTER c_src EXCLUDE REGEX "main")
 
 #janson
 find_package(jansson)
@@ -28,9 +29,9 @@ find_package(libjwt)
 include_directories(${lIBJWT_INCLUDE_DIR})
 link_libraries(${LIBJWT_LIBRARIES})
 #executable
-add_executable(server c_inc/mongoose/mongoose.c ${c_src})
+add_executable(server c_inc/mongoose/mongoose.c c_src/main.c ${c_src} c_inc/bstring/bstrlib.c)
 
 
 #tests
-add_executable(server_tests c_inc/munit/munit.c c_inc/mongoose/mongoose.c ${c_src})
+add_executable(server_tests c_inc/munit/munit.c c_inc/mongoose/mongoose.c c_tests/main.c ${c_src} c_inc/bstring/bstrlib.c)
 add_test(server_test server_tests)

@@ -1,7 +1,7 @@
 #ifndef SERVER_H_
 #define SERVER_H_
 
-#include <caaa/bstrlib.h>
+#include <bstring/bstrlib.h>
 #include <caaa/dbg.h>
 #include <handlers.h>
 #include <mongoose/mongoose.h>
